@@ -1,0 +1,60 @@
+{
+  "intro": "Every Maze Guardians story starts as a drawing. These are the original sketches that inspired Issue #1 — shown exactly as they were drawn, only trimmed and resized for the web.",
+  "items": [
+    {
+      "id": "stretch-punch",
+      "title": "The Stretch-Punch",
+      "src": "/art/owner/stretch-punch.webp",
+      "fallback": "/art/owner/stretch-punch.png",
+      "width": 1600,
+      "height": 900,
+      "alt": "Hand-drawn sketch: a big figure with three green dragon heads on his helmet stretches his arm across the page to bonk a flying stick figure, while two sword-carrying figures shout 'attack!!' and another yells 'ahh'",
+      "note": "The very first Dragoncrest — and the moment the Glitchlings learned to bounce.",
+      "usedIn": "Issue #1, panel 4"
+    },
+    {
+      "id": "stretch-punch-replay",
+      "title": "Stretch-Punch, Take Two",
+      "src": "/art/owner/stretch-punch-replay.webp",
+      "fallback": "/art/owner/stretch-punch-replay.png",
+      "width": 1600,
+      "height": 900,
+      "alt": "Hand-drawn sketch: a second version of the Stretch-Punch scene with a slightly different neck on the giant hero",
+      "note": "A second take on the same scene. Comics call this an instant replay.",
+      "usedIn": "Issue #1, panel 5"
+    },
+    {
+      "id": "robo-beast-roar",
+      "title": "Robo-Beast Roar",
+      "src": "/art/owner/robo-beast-roar.webp",
+      "fallback": "/art/owner/robo-beast-roar.png",
+      "width": 1600,
+      "height": 1191,
+      "alt": "Hand-drawn sketch: a huge grey robo-beast roars next to a tall tower with a crash, while little stick figures below shout 'Yikes'",
+      "note": "The sketch that introduced Grumblejaw — complete with roar, crash and a well-earned 'Yikes!'",
+      "usedIn": "Issue #1, panel 3"
+    },
+    {
+      "id": "wave-ride",
+      "title": "The Wave Ride",
+      "src": "/art/owner/wave-ride.webp",
+      "fallback": "/art/owner/wave-ride.png",
+      "width": 1600,
+      "height": 805,
+      "alt": "Hand-drawn sketch: four stick-figure heroes travel along the back of a blue sea serpent on a wave over purple sand, with a crescent moon in the sky",
+      "note": "Where Splashfang found out he makes an excellent surfboard.",
+      "usedIn": "Issue #1, panel 7"
+    },
+    {
+      "id": "yeti-showdown",
+      "title": "Yeti Showdown",
+      "src": "/art/owner/yeti-showdown.webp",
+      "fallback": "/art/owner/yeti-showdown.png",
+      "width": 1581,
+      "height": 1600,
+      "alt": "Hand-drawn sketch: under a yellow sun, a colourful team of heroes — an archer, a hero in a blue shield, a speedster with zigzag legs and others — faces a giant labelled 'Yeti' in the snow",
+      "note": "The whole team's first big battle. Arrowlight, Bubbleguard, Zigzag and Blizzardbyte all started here.",
+      "usedIn": "Issue #1, panel 8"
+    }
+  ]
+}

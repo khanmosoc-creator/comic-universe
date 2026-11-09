@@ -1,0 +1,311 @@
+{
+  "id": "issue-1",
+  "slug": "issue-1",
+  "number": 1,
+  "title": "The Great Maze Scramble",
+  "tagline": "Three villains. One wobbly Compass Core. Zero pancakes left.",
+  "synopsis": "When the Compass Core at the heart of the Mazeverse starts to wobble, three villains try to scramble every path at once. Super Zayd splits the Maze Guardians across the Mazeverse — from a robo-beast rampage in Neon City to a wave ride across the Grape-Jelly Dunes and a snowball showdown in the Frost Fields.",
+  "readingTime": "About 5 minutes",
+  "ageNote": "Made for readers of all ages. Bonks, boings and splashes only — nobody gets hurt.",
+  "cover": {
+    "src": "/art/panels/cover-issue-1.svg",
+    "width": 1200,
+    "height": 1800,
+    "alt": "Issue 1 cover: Super Zayd front and centre with Dragoncrest, Arrowlight, Bubbleguard and Zigzag, while Grumblejaw, Blizzardbyte and Splashfang loom behind them"
+  },
+  "panels": [
+    {
+      "id": "p1",
+      "image": {
+        "src": "/art/panels/p01-lighthouse.svg",
+        "width": 1200,
+        "height": 800
+      },
+      "alt": "Dawn over Lighthouse HQ in the middle of a glowing maze. Super Zayd waves; Zigzag balances a tall stack of pancakes.",
+      "source": "studio",
+      "caption": "The Mazeverse: a giant, glowing maze where every path shines — as long as the Compass Core keeps spinning.",
+      "dialogue": [
+        {
+          "speaker": "Super Zayd",
+          "text": "Quiet morning, Guardians. Too quiet.",
+          "kind": "speech"
+        },
+        {
+          "speaker": "Zigzag",
+          "text": "That's because I already ate everybody's pancakes.",
+          "kind": "speech"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "image": {
+        "src": "/art/panels/p02-alarm.svg",
+        "width": 1200,
+        "height": 800
+      },
+      "alt": "Inside headquarters a big maze map flashes three red warning signs and an alarm burst reads WEE-OO! Zayd points at the map; Dragoncrest looks worried.",
+      "source": "studio",
+      "dialogue": [
+        {
+          "speaker": "Super Zayd",
+          "text": "The Compass Core is wobbling! Three zones are going haywire at once!",
+          "kind": "shout"
+        },
+        {
+          "speaker": "Flicker",
+          "text": "Was it us?",
+          "kind": "speech"
+        },
+        {
+          "speaker": "Flame",
+          "text": "It was YOU.",
+          "kind": "speech"
+        },
+        {
+          "speaker": "Fluff",
+          "text": "It was the cat.",
+          "kind": "speech"
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "image": {
+        "src": "/art/owner/robo-beast-roar.webp",
+        "fallback": "/art/owner/robo-beast-roar.png",
+        "width": 1600,
+        "height": 1191
+      },
+      "alt": "Hand-drawn sketch: a giant grey robo-beast roars and crashes beside a tall tower while tiny people below shout 'Yikes!'",
+      "source": "owner",
+      "caption": "Neon City, 8:02 a.m. Grumblejaw the Robo-Beast has arrived — and he did NOT wipe his feet.",
+      "sfx": "CRASH!",
+      "dialogue": [
+        {
+          "speaker": "Grumblejaw",
+          "text": "ROOOAR! Every road leads to MY junkyard now!",
+          "kind": "shout"
+        },
+        {
+          "speaker": "Neon City kids",
+          "text": "Yikes!",
+          "kind": "shout"
+        }
+      ]
+    },
+    {
+      "id": "p4",
+      "image": {
+        "src": "/art/owner/stretch-punch.webp",
+        "fallback": "/art/owner/stretch-punch.png",
+        "width": 1600,
+        "height": 900
+      },
+      "alt": "Hand-drawn sketch: Dragoncrest, with three green dragons on his helmet, stretches his arm far across the page and bonks a Glitchling into the air, while two Glitchlings with swords shout 'Attack!'",
+      "source": "owner",
+      "caption": "Grumblejaw brought friends: a gang of Glitchlings with foam pool-noodle swords.",
+      "dialogue": [
+        {
+          "speaker": "Glitchlings",
+          "text": "ATTAAACK!!",
+          "kind": "shout"
+        },
+        {
+          "speaker": "Dragoncrest",
+          "text": "Stretch-Punch — around the corner… special delivery!",
+          "kind": "speech"
+        },
+        {
+          "speaker": "Flying Glitchling",
+          "text": "Ahhhh!",
+          "kind": "shout"
+        }
+      ]
+    },
+    {
+      "id": "p5",
+      "image": {
+        "src": "/art/owner/stretch-punch-replay.webp",
+        "fallback": "/art/owner/stretch-punch-replay.png",
+        "width": 1600,
+        "height": 900
+      },
+      "alt": "Hand-drawn sketch, second take: the same Stretch-Punch from a slightly different angle, with the Glitchling flying off again",
+      "source": "owner",
+      "caption": "INSTANT REPLAY! That was so awesome, we're showing it twice. (Don't worry — Glitchlings are made of jelly code. They bounce.)",
+      "dialogue": [
+        {
+          "speaker": "Flying Glitchling",
+          "text": "Ahhhh! …again!",
+          "kind": "shout"
+        }
+      ]
+    },
+    {
+      "id": "p6",
+      "image": {
+        "src": "/art/panels/p06-maze-sight.svg",
+        "width": 1200,
+        "height": 800
+      },
+      "alt": "Zayd's eyes glow gold as Maze-Sight lights up dotted golden paths across a purple maze, leading to an ice zone and a sea zone",
+      "source": "studio",
+      "dialogue": [
+        {
+          "speaker": "Super Zayd",
+          "text": "Grumblejaw is only the distraction! The real trouble is in the Splash Sea and the Frost Fields.",
+          "kind": "speech"
+        },
+        {
+          "speaker": "Super Zayd",
+          "text": "Zigzag, take the sea. Bubbleguard and Arrowlight, the snow. Dragoncrest — you're with me!",
+          "kind": "speech"
+        }
+      ]
+    },
+    {
+      "id": "p7",
+      "image": {
+        "src": "/art/owner/wave-ride.webp",
+        "fallback": "/art/owner/wave-ride.png",
+        "width": 1600,
+        "height": 805
+      },
+      "alt": "Hand-drawn sketch: four little heroes ride along the back of a blue sea serpent on a big wave above purple sand, under a crescent moon",
+      "source": "owner",
+      "caption": "Meanwhile, over the Grape-Jelly Dunes… Splashfang sends a giant wave to wash the paths away.",
+      "dialogue": [
+        {
+          "speaker": "Zigzag",
+          "text": "SURF'S UP!",
+          "kind": "shout"
+        },
+        {
+          "speaker": "Splashfang",
+          "text": "Hey! I am NOT a surfboard!",
+          "kind": "shout"
+        }
+      ]
+    },
+    {
+      "id": "p8",
+      "image": {
+        "src": "/art/owner/yeti-showdown.webp",
+        "fallback": "/art/owner/yeti-showdown.png",
+        "width": 1581,
+        "height": 1600
+      },
+      "alt": "Hand-drawn sketch: under a yellow sun, the team faces a giant labelled 'Yeti' in the snow — an archer with a blue bow, a hero in a blue shield, a speedster with zigzag legs and more, with icy puddles below",
+      "source": "owner",
+      "caption": "The Frost Fields. Blizzardbyte the Glitch Yeti has frozen every path into a slippery ice maze.",
+      "dialogue": [
+        {
+          "speaker": "Blizzardbyte",
+          "text": "Nobody escapes my ice maze! Brrr-ha-ha!",
+          "kind": "shout"
+        },
+        {
+          "speaker": "Arrowlight",
+          "text": "Good thing we're not trying to escape. We're trying to WIN.",
+          "kind": "speech"
+        }
+      ]
+    },
+    {
+      "id": "p9",
+      "image": {
+        "src": "/art/panels/p09-bubble-boing.svg",
+        "width": 1200,
+        "height": 800
+      },
+      "alt": "Bubbleguard holds up a giant bubble that bounces snowballs back toward a surprised yeti, under a pink burst that reads BOING!",
+      "source": "studio",
+      "dialogue": [
+        {
+          "speaker": "Bubbleguard",
+          "text": "Bubble up! Return to sender!",
+          "kind": "speech"
+        },
+        {
+          "speaker": "Blizzardbyte",
+          "text": "My own snowballs?! That's… actually pretty fair.",
+          "kind": "speech"
+        }
+      ]
+    },
+    {
+      "id": "p10",
+      "image": {
+        "src": "/art/panels/p10-light-bridge.svg",
+        "width": 1200,
+        "height": 800
+      },
+      "alt": "Arrowlight fires a glowing light-bridge over a dark chasm. Zayd and Dragoncrest race across toward the Compass Core, which has three Scramble Magnets stuck to it.",
+      "source": "studio",
+      "caption": "At the heart of the maze, the villains have stuck three Scramble Magnets onto the Compass Core.",
+      "dialogue": [
+        {
+          "speaker": "Super Zayd",
+          "text": "Ready? We pull them off on three!",
+          "kind": "speech"
+        },
+        {
+          "speaker": "Dragoncrest",
+          "text": "ON three… or AFTER three?",
+          "kind": "speech"
+        }
+      ]
+    },
+    {
+      "id": "p11",
+      "image": {
+        "src": "/art/panels/p11-core-restored.svg",
+        "width": 1200,
+        "height": 800
+      },
+      "alt": "The Compass Core blazes back to life under a red burst that reads KA-WHOOMP!, and the three villains go tumbling away into the distance",
+      "source": "studio",
+      "dialogue": [
+        {
+          "speaker": "Grumblejaw",
+          "text": "This isn't over, Maze Guardians! …Which way is home?",
+          "kind": "shout"
+        },
+        {
+          "speaker": "Super Zayd",
+          "text": "Left, left, right — and wipe your feet this time!",
+          "kind": "speech"
+        }
+      ]
+    },
+    {
+      "id": "p12",
+      "image": {
+        "src": "/art/panels/p12-finale.svg",
+        "width": 1200,
+        "height": 800
+      },
+      "alt": "Sunset group pose of all five Maze Guardians in front of a giant sun, while a cracked mirror glints in the corner",
+      "source": "studio",
+      "caption": "The Mazeverse is safe… for now. But deep beneath the maze, a mirror has started to crack…",
+      "dialogue": [
+        {
+          "speaker": "Zigzag",
+          "text": "Victory pancakes?",
+          "kind": "speech"
+        },
+        {
+          "speaker": "Everyone",
+          "text": "VICTORY PANCAKES!",
+          "kind": "shout"
+        }
+      ]
+    }
+  ],
+  "nextIssue": {
+    "number": 2,
+    "title": "The Mirror Maze",
+    "teaser": "What happens when the Guardians meet… themselves? Coming soon."
+  }
+}

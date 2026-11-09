@@ -1,0 +1,237 @@
+{
+  "heroes": [
+    {
+      "id": "zayd",
+      "name": "Super Zayd",
+      "role": "Team Leader · The Pathfinder",
+      "tagline": "Every maze has a way out. Let's find it together!",
+      "image": "/art/heroes/zayd.svg",
+      "imageAlt": "Super Zayd raising a fist, wearing a teal and gold suit, a blue mask and a blue cape with golden maze lines",
+      "colors": { "primary": "#0fb5a6", "accent": "#facc15", "ink": "#1e3a8a" },
+      "powers": [
+        "Maze-Sight: his eyes glow gold and show every path, shortcut and secret door",
+        "Compass Cape: glides on warm air like a giant paper kite",
+        "Wayfinder Star: a throwing star that turns into a glowing signpost wherever it lands"
+      ],
+      "personality": "Brave, kind and a tiny bit too fond of puns. Zayd never leaves a teammate behind, even when that teammate is busy eating the last pancake.",
+      "catchphrase": "Left, right, or straight ahead — Guardians, let's go!",
+      "funFacts": [
+        "Can solve a hedge maze blindfolded. Cannot find his left sneaker in the morning.",
+        "Keeps a map of every maze he has ever solved in a scrapbook under his bed.",
+        "Invented the team's high-five: it's shaped like a Z."
+      ],
+      "stats": [
+        { "label": "Courage", "value": 10 },
+        { "label": "Map Smarts", "value": 10 },
+        { "label": "Speed", "value": 6 },
+        { "label": "Pun Power", "value": 9 }
+      ],
+      "inspiredBy": null
+    },
+    {
+      "id": "dragoncrest",
+      "name": "Dragoncrest",
+      "role": "The Gentle Giant",
+      "tagline": "Three heads are better than one. Usually.",
+      "image": "/art/heroes/dragoncrest.svg",
+      "imageAlt": "Dragoncrest, a big friendly figure in grey armour whose helmet carries three little green dragons",
+      "colors": { "primary": "#94a3b8", "accent": "#22c55e", "ink": "#1b1035" },
+      "powers": [
+        "Stretch-Punch: his armoured arm stretches around corners to bonk trouble from far away",
+        "Crest Lookout: Flicker, Flame and Fluff — the three helmet dragons — can watch three hallways at once",
+        "Warm Breath: the dragons puff toasty sparks that melt ice (and toast marshmallows)"
+      ],
+      "personality": "The biggest Guardian and the softest heart. He says sorry to doors before he walks through them.",
+      "catchphrase": "Special delivery — one Stretch-Punch, coming around the corner!",
+      "funFacts": [
+        "The three helmet dragons argue about lunch every single day.",
+        "Fluff is afraid of butterflies. Flame is not afraid of anything. Flicker is mostly sleepy.",
+        "First drawn in the Guardians' Art Vault as a giant with a three-dragon crest."
+      ],
+      "stats": [
+        { "label": "Strength", "value": 10 },
+        { "label": "Reach", "value": 10 },
+        { "label": "Speed", "value": 4 },
+        { "label": "Hugs", "value": 10 }
+      ],
+      "inspiredBy": "stretch-punch"
+    },
+    {
+      "id": "arrowlight",
+      "name": "Arrowlight",
+      "role": "The Bridge Builder",
+      "tagline": "I never miss. And when I do, I make a bridge.",
+      "image": "/art/heroes/arrowlight.svg",
+      "imageAlt": "Arrowlight in a blue hood and suit drawing a glowing cyan bow",
+      "colors": { "primary": "#2563eb", "accent": "#67e8f9", "ink": "#1e293b" },
+      "powers": [
+        "Light Arrows: arrows made of sunshine that never hurt anyone",
+        "Bridge Shot: an arrow that stretches into a glowing bridge across any gap",
+        "Signal Flare: a sparkly arrow that writes messages in the sky"
+      ],
+      "personality": "Calm, careful and secretly hilarious. Arrowlight practises archery every morning — on pancakes. (She gives them back.)",
+      "catchphrase": "Aim high, land soft!",
+      "funFacts": [
+        "Her bow folds up small enough to fit in a lunchbox.",
+        "She can write the whole alphabet in the sky with Signal Flares.",
+        "First spotted in the Art Vault battling a yeti with a blue bow."
+      ],
+      "stats": [
+        { "label": "Aim", "value": 10 },
+        { "label": "Calm", "value": 9 },
+        { "label": "Speed", "value": 7 },
+        { "label": "Secret Jokes", "value": 8 }
+      ],
+      "inspiredBy": "yeti-showdown"
+    },
+    {
+      "id": "bubbleguard",
+      "name": "Bubbleguard",
+      "role": "The Protector",
+      "tagline": "Don't worry. I've got you covered — in bubbles.",
+      "image": "/art/heroes/bubbleguard.svg",
+      "imageAlt": "Bubbleguard in an aqua suit and pink mask, arms raised inside a giant shimmering bubble",
+      "colors": { "primary": "#06b6d4", "accent": "#f472b6", "ink": "#1b1035" },
+      "powers": [
+        "Bubble Shield: a bouncy force-field bubble that nothing gets through",
+        "Boing-Back: anything that hits her bubble bounces right back where it came from",
+        "Bubble Taxi: carries friends safely across lava, rivers and very sticky jelly"
+      ],
+      "personality": "Thoughtful and super caring. She giggles when she's nervous, which makes everyone else feel less nervous too.",
+      "catchphrase": "Bubble up!",
+      "funFacts": [
+        "Her bubbles smell faintly of bubblegum.",
+        "She once kept a whole picnic dry during a thunderstorm.",
+        "First seen in the Art Vault glowing in a bright blue shield."
+      ],
+      "stats": [
+        { "label": "Defense", "value": 10 },
+        { "label": "Kindness", "value": 10 },
+        { "label": "Speed", "value": 5 },
+        { "label": "Giggles", "value": 9 }
+      ],
+      "inspiredBy": "yeti-showdown"
+    },
+    {
+      "id": "zigzag",
+      "name": "Zigzag",
+      "role": "The Speedster",
+      "tagline": "Why go straight when you can go zig… and then zag?",
+      "image": "/art/heroes/zigzag.svg",
+      "imageAlt": "Zigzag the speedster in a purple suit with a lightning-bolt emblem, running with a rainbow trail behind her",
+      "colors": { "primary": "#9333ea", "accent": "#fde047", "ink": "#1b1035" },
+      "powers": [
+        "Zig-Speed: runs so fast she sometimes arrives before she leaves",
+        "Rainbow Trail: leaves a colourful path so nobody gets lost following her",
+        "Wave Surfing: can surf on any wave — even ones made of jelly"
+      ],
+      "personality": "Bouncy, loud and always first in line for breakfast. She has never once walked anywhere.",
+      "catchphrase": "Ready, set — I'm already there!",
+      "funFacts": [
+        "Eats 14 pancakes before breakfast. Then has breakfast.",
+        "Her goggles are for wind, not for looking cool. (They do look cool.)",
+        "First seen in the Art Vault zig-zagging through the snow."
+      ],
+      "stats": [
+        { "label": "Speed", "value": 10 },
+        { "label": "Energy", "value": 10 },
+        { "label": "Patience", "value": 3 },
+        { "label": "Pancakes", "value": 10 }
+      ],
+      "inspiredBy": "wave-ride"
+    }
+  ],
+  "villains": [
+    {
+      "id": "grumblejaw",
+      "name": "Grumblejaw",
+      "role": "The Junkyard Robo-Beast",
+      "tagline": "ROOOAR! Everything is MINE! …Including that bolt. And that one.",
+      "image": "/art/villains/grumblejaw.svg",
+      "imageAlt": "Grumblejaw, a grey junkyard robot beast with tank treads, red eyes, smoking ears and a huge underbite jaw",
+      "colors": { "primary": "#6b7280", "accent": "#ef4444", "ink": "#1b1035" },
+      "powers": [
+        "Mega-Roar: a roar so loud it rattles maze walls",
+        "Junk Magnet: pulls in every bolt, spoon and bicycle bell nearby",
+        "Tank Treads: stomps straight through walls instead of walking around them"
+      ],
+      "scheme": "Wants to scramble the Compass Core so every road in the Mazeverse leads to his junkyard.",
+      "weakness": "Gets distracted by shiny things. Also, he can't turn left very well.",
+      "personality": "Loud and grumpy, but mostly because nobody ever lends him a wrench.",
+      "catchphrase": "ROOOAR! …Has anyone seen my other bolt?",
+      "funFacts": [
+        "Built himself out of a vending machine, two shopping carts and a toaster.",
+        "Was first spotted in the Art Vault crashing into a tower."
+      ],
+      "stats": [
+        { "label": "Loudness", "value": 10 },
+        { "label": "Strength", "value": 9 },
+        { "label": "Sense of Direction", "value": 1 },
+        { "label": "Grumpiness", "value": 9 }
+      ],
+      "inspiredBy": "robo-beast-roar"
+    },
+    {
+      "id": "blizzardbyte",
+      "name": "Blizzardbyte",
+      "role": "The Glitch Yeti",
+      "tagline": "Nobody escapes my ice maze! Brrr-ha-ha!",
+      "image": "/art/villains/blizzardbyte.svg",
+      "imageAlt": "Blizzardbyte, a big white yeti with an ice crown and glitchy coloured pixels in his fur",
+      "colors": { "primary": "#e0f2fe", "accent": "#7dd3fc", "ink": "#1b1035" },
+      "powers": [
+        "Freeze Frame: turns maze paths into slippery ice",
+        "Snowball Storm: throws a hundred snowballs a minute",
+        "Glitch Hop: blips from one icy hallway to another"
+      ],
+      "scheme": "Wants to freeze the whole Mazeverse into one giant ice maze where he is the only one who knows the way.",
+      "weakness": "Warm cocoa and warm hugs. He melts (emotionally).",
+      "personality": "Thinks he's the scariest thing in the Frost Fields. Actually just lonely.",
+      "catchphrase": "Brrr-ha-ha!",
+      "funFacts": [
+        "The coloured pixels in his fur are glitches. They tickle.",
+        "Was first spotted in the Art Vault facing the whole team in the snow."
+      ],
+      "stats": [
+        { "label": "Chill", "value": 10 },
+        { "label": "Snowball Aim", "value": 8 },
+        { "label": "Warmth", "value": 2 },
+        { "label": "Secret Loneliness", "value": 9 }
+      ],
+      "inspiredBy": "yeti-showdown"
+    },
+    {
+      "id": "splashfang",
+      "name": "Splashfang",
+      "role": "The Wave Serpent",
+      "tagline": "Surf's up — and you're going DOWN the drain!",
+      "image": "/art/villains/splashfang.svg",
+      "imageAlt": "Splashfang, a cheeky blue sea serpent with a spiky crest and one goofy fang",
+      "colors": { "primary": "#2563eb", "accent": "#22d3ee", "ink": "#1b1035" },
+      "powers": [
+        "Tidal Tantrum: whips up giant waves that wash maze paths away",
+        "Bubble Breath: blows bubbles that pop into puddles",
+        "Slip Slide: makes any floor as slippery as a water slide"
+      ],
+      "scheme": "Wants to flood the Grape-Jelly Dunes so the whole Mazeverse becomes one big splash park — for him only.",
+      "weakness": "Hates being used as a surfboard. Ticklish under the chin.",
+      "personality": "Cheeky and splashy. Thinks every problem can be solved with a bigger wave.",
+      "catchphrase": "SPLASH ATTACK!",
+      "funFacts": [
+        "His single fang is a baby tooth. He's still waiting for the other one.",
+        "Was first spotted in the Art Vault carrying the whole team on his back by accident."
+      ],
+      "stats": [
+        { "label": "Splash", "value": 10 },
+        { "label": "Sneakiness", "value": 7 },
+        { "label": "Surfboard Dignity", "value": 1 },
+        { "label": "Cheekiness", "value": 10 }
+      ],
+      "inspiredBy": "wave-ride"
+    }
+  ],
+  "minions": {
+    "name": "Glitchlings",
+    "description": "Tiny pixel critters made of wobbly jelly code. They carry foam pool-noodle swords, shout \"ATTACK!\" a lot, and bounce harmlessly when bonked. Most of them just want snacks."
+  }
+}

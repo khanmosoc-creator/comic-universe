@@ -1,0 +1,56 @@
+{
+  "intro": "Beyond the edge of every screen, past the last level of every game and somewhere just behind your dreams, floats the Mazeverse: an enormous, glowing maze that rebuilds itself every night. Its paths connect everything — hallways, rivers, treetops and stars. And keeping those paths open is the job of five friends called the Maze Guardians.",
+  "map": {
+    "src": "/art/brand/mazeverse-map.svg",
+    "width": 1200,
+    "height": 900,
+    "alt": "Map of the Mazeverse: the Compass Core sits in the middle, surrounded by four zones — Frost Fields, Rustbolt Junkyard, Splash Sea and Neon City"
+  },
+  "places": [
+    {
+      "name": "The Compass Core",
+      "color": "#facc15",
+      "text": "A giant spinning compass at the centre of the Mazeverse. As long as it spins, every path has a way out. If it wobbles, the maze gets scrambled — and everyone gets lost."
+    },
+    {
+      "name": "Lighthouse HQ",
+      "color": "#14b8a6",
+      "text": "The Guardians' headquarters. Its beam sweeps the maze every night so nobody is ever left in the dark. The kitchen is mostly a pancake factory."
+    },
+    {
+      "name": "Neon City",
+      "color": "#ec4899",
+      "text": "Glowing towers, hover-scooters and the best snack stands in the Mazeverse. Grumblejaw keeps stomping through it on his way to nowhere in particular."
+    },
+    {
+      "name": "Frost Fields",
+      "color": "#38bdf8",
+      "text": "Snowy, sparkly and full of icy puddles. Home of Blizzardbyte the Glitch Yeti, who has never once been invited to a snowball fight."
+    },
+    {
+      "name": "Splash Sea & the Grape-Jelly Dunes",
+      "color": "#8b5cf6",
+      "text": "A bright blue sea that crashes onto purple dunes that wobble when you walk on them. Splashfang the Wave Serpent lives in the deepest, splashiest part."
+    },
+    {
+      "name": "Rustbolt Junkyard",
+      "color": "#9ca3af",
+      "text": "Mountains of old bolts, springs and broken toasters. Grumblejaw built himself here, and he is still looking for a missing bolt."
+    }
+  ],
+  "code": {
+    "title": "The Guardian Code",
+    "rules": [
+      "Leave no one lost.",
+      "Share the map — and the snacks.",
+      "Be kind to Glitchlings. They are mostly just confused.",
+      "If you get stuck, ask a friend. Two heads are better than one. Three heads (ask Dragoncrest) are complicated.",
+      "Always wipe your feet."
+    ]
+  },
+  "timeline": [
+    { "label": "Issue #1", "title": "The Great Maze Scramble", "status": "Out now" },
+    { "label": "Issue #2", "title": "The Mirror Maze", "status": "Coming soon" },
+    { "label": "Issue #3", "title": "Secret of the Glitchlings", "status": "In the sketchbook" }
+  ]
+}
