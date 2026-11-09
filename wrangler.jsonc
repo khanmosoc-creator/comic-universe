@@ -1,0 +1,14 @@
+// Cloudflare Workers Static Assets config (Pages successor).
+// Serves the built Vite site at apps/web/dist with SPA fallback,
+// so direct loads of /heroes/zayd, /read/issue-1?panel=5 etc. return
+// index.html. The _headers file inside dist/ is respected (CSP etc.).
+// No worker script: this is a static-only deployment.
+{
+  "$schema": "https://raw.githubusercontent.com/cloudflare/workers-sdk/main/packages/wrangler/config-schema.json",
+  "name": "super-zayds-maze-guardians",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./apps/web/dist",
+    "not_found_handling": "single-page-application"
+  }
+}
