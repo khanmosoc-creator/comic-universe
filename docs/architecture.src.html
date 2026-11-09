@@ -128,13 +128,13 @@ svg text { font-family: var(--body); }
     <header class="top" id="summary">
       <span class="eyebrow">Project handbook · comic-universe</span>
       <h1>Super Zayd's Maze Guardians</h1>
-      <p class="lede">A free, kid-friendly superhero comic website: five heroes, three villains, a 12-panel Issue #1 reader and an Art Vault of the original sketches. Static React site on Cloudflare Pages, with no accounts, forms, ads, analytics or third-party requests.</p>
+      <p class="lede">A free, kid-friendly superhero comic website: five heroes, three villains, a 12-panel Issue #1 reader and an Art Vault of the original sketches. Static React site on Cloudflare (Workers Static Assets, free plan), with no accounts, forms, ads, analytics or third-party requests.</p>
       <dl class="facts">
-        <div><dt>Live website</dt><dd>{{LIVE_LINK}}</dd></div>
+        <div><dt>Live website</dt><dd><a href="https://super-zayds-maze-guardians.khanmosoc.workers.dev">super-zayds-maze-guardians.khanmosoc.workers.dev</a></dd></div>
         <div><dt>Repository</dt><dd><a href="https://github.com/khanmosoc-creator/comic-universe">github.com/khanmosoc-creator/comic-universe</a></dd></div>
         <div><dt>Stack</dt><dd>React 19 · TypeScript 5.9 · Vite 7</dd></div>
         <div><dt>Hosting</dt><dd>Cloudflare Pages, Free plan ($0)</dd></div>
-        <div><dt>Deployment</dt><dd>{{DEPLOY_STATUS}}</dd></div>
+        <div><dt>Deployment</dt><dd>Git-integrated: push to <code>main</code> → Cloudflare Workers Static Assets auto-deploy (wrangler.jsonc)</dd></div>
         <div><dt>Future backend</dt><dd><code>services/api</code> · Java 21, Spring Boot</dd></div>
       </dl>
     </header>
@@ -349,7 +349,25 @@ python3 tools/art/generate_art.py apps/web/public/art</code></pre></li>
     <section id="verify">
       <span class="eyebrow">10 · Evidence</span>
       <h2>Verification</h2>
-      {{VERIFY_BLOCK}}
+      <p>Live-site verification performed November 9, 2026 against <code>https://super-zayds-maze-guardians.khanmosoc.workers.dev</code>.</p>
+      <div class="scroll-x"><table>
+        <thead><tr><th>Check</th><th>Result</th></tr></thead>
+        <tbody>
+          <tr><td>HTTPS / HSTS</td><td>✅ <code>.workers.dev</code> is HSTS-preloaded; <code>Strict-Transport-Security: max-age=31536000; includeSubDomains</code></td></tr>
+          <tr><td>Direct-load SPA routing (6 routes tested)</td><td>✅ <code>/</code>, <code>/heroes/zayd</code>, <code>/villains/grumblejaw</code>, <code>/read/issue-1?panel=5</code>, <code>/privacy</code>, <code>/universe</code> all return <code>200</code></td></tr>
+          <tr><td>Content-Security-Policy</td><td>✅ <code>default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; media-src 'none'; object-src 'none'; frame-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'none'; manifest-src 'self'; upgrade-insecure-requests</code></td></tr>
+          <tr><td>Security headers</td><td>✅ <code>Referrer-Policy: no-referrer</code>, <code>X-Content-Type-Options: nosniff</code>, <code>X-Frame-Options: DENY</code>, <code>Cross-Origin-Opener-Policy: same-origin</code>, <code>Permissions-Policy</code></td></tr>
+          <tr><td>Third-party requests</td><td>✅ Zero — every network request is to <code>super-zayds-maze-guardians.khanmosoc.workers.dev</code></td></tr>
+          <tr><td>Cookies / localStorage / sessionStorage</td><td>✅ All empty</td></tr>
+          <tr><td>Console errors</td><td>✅ None</td></tr>
+          <tr><td>Mobile layout (375 × 812)</td><td>✅ No horizontal scroll, hamburger menu works, reader panels sized correctly</td></tr>
+          <tr><td>Art assets (heroes, villains, panels, owner sketches)</td><td>✅ All load (200/304), no broken images</td></tr>
+          <tr><td>Comic reader deep link (<code>?panel=5</code>)</td><td>✅ Opens directly at panel 5 with owner sketch visible</td></tr>
+          <tr><td>Privacy page</td><td>✅ Dated November 9, 2026; discloses Cloudflare processing; no invented contact</td></tr>
+          <tr><td>GitHub CI (web-ci)</td><td>✅ TypeScript + Vite build green</td></tr>
+          <tr><td>GitHub CI (api-ci)</td><td>✅ Maven verify green</td></tr>
+        </tbody>
+      </table></div>
       <p>Re-run anytime: <code>python3 apps/web/scripts/e2e_check.py &lt;site-url&gt; /tmp/shots</code> (Playwright).</p>
     </section>
 
@@ -373,7 +391,13 @@ mvn spring-boot:run        # http://localhost:8080/api/v1/issues/issue-1</code><
       <span class="eyebrow">13 · Open items</span>
       <h2>Known limitations</h2>
       <ul>
-        {{LIMITS}}
+        <li><strong>SPA 200 on unknown paths.</strong> Unknown routes return HTTP 200 with the in-app "Wrong turn" page rather than a true 404. This is inherent to SPA routing on static hosts.</li>
+        <li><strong>Manual screen-reader pass pending.</strong> Keyboard and landmark structure are verified; a full VoiceOver/NVDA walkthrough by a person is recommended before launch.</li>
+        <li><strong>Spring Boot version.</strong> The optional API uses Spring Boot 3.5; upgrade to 4.x before production deployment.</li>
+        <li><strong>AI-art copyright.</strong> AI-assisted illustrations may have limited standalone copyright protection in the US. Review before registering or licensing.</li>
+        <li><strong>No business contact on /privacy.</strong> COPPA online notices are expected to identify the operator. Add a real contact before commercial launch.</li>
+        <li><strong>Preview deployments are public.</strong> Anyone with a preview URL can see the preview. Optional: restrict with Cloudflare Access.</li>
+        <li><strong>Workers Static Assets hosting.</strong> The project uses Cloudflare Workers Static Assets (the successor to Cloudflare Pages) with a <code>wrangler.jsonc</code> config. The domain is <code>.workers.dev</code> instead of <code>.pages.dev</code>. Custom domains work identically.</li>
       </ul>
     </section>
   </main>
