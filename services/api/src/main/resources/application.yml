@@ -1,0 +1,28 @@
+# Privacy-by-design defaults: stateless, no sessions, no cookies, no access logs with IP addresses.
+server:
+  port: ${PORT:8080}
+  error:
+    include-stacktrace: never
+    include-message: always
+  tomcat:
+    accesslog:
+      enabled: false
+spring:
+  application:
+    name: comic-content-api
+  main:
+    banner-mode: off
+  jackson:
+    default-property-inclusion: non_null
+comic:
+  cors:
+    allowed-origins: ${COMIC_CORS_ALLOWED_ORIGINS:}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      probes:
+        enabled: true

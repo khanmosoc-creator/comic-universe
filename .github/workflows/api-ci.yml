@@ -1,0 +1,29 @@
+name: api-ci
+
+# Builds and tests the OPTIONAL Spring Boot content API. The public website never depends on it.
+on:
+  push:
+    branches: [main]
+    paths: ['services/api/**', 'apps/web/src/content/**', '.github/workflows/api-ci.yml']
+  pull_request:
+    paths: ['services/api/**', 'apps/web/src/content/**']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: services/api
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+      - name: Build and test
+        run: mvn -B -ntp verify

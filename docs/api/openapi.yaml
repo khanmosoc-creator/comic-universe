@@ -1,0 +1,145 @@
+openapi: 3.1.0
+info:
+  title: Maze Guardians Content API (optional, future)
+  version: 0.1.0
+  description: >
+    Read-only comic content API implemented in services/api (Java 21, Spring Boot).
+    The public MVP website does NOT call this API; it bundles the same JSON at build time.
+    Stateless: no authentication, sessions, cookies or personal data.
+servers:
+  - url: http://localhost:8080
+paths:
+  /api/v1/issues:
+    get:
+      summary: List issues
+      responses:
+        '200':
+          description: Issue summaries
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/IssueSummary' }
+  /api/v1/issues/{slug}:
+    get:
+      summary: Get one issue with its panels
+      parameters:
+        - { name: slug, in: path, required: true, schema: { type: string, example: issue-1 } }
+      responses:
+        '200':
+          description: The issue
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Issue' }
+        '404': { description: Unknown issue }
+  /api/v1/characters/{kind}:
+    get:
+      summary: List heroes or villains
+      parameters:
+        - { name: kind, in: path, required: true, schema: { type: string, enum: [heroes, villains] } }
+      responses:
+        '200':
+          description: Characters
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Character' }
+        '404': { description: Unknown kind }
+  /api/v1/characters/{kind}/{id}:
+    get:
+      summary: Get one character
+      parameters:
+        - { name: kind, in: path, required: true, schema: { type: string, enum: [heroes, villains] } }
+        - { name: id, in: path, required: true, schema: { type: string, example: zayd } }
+      responses:
+        '200':
+          description: The character
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Character' }
+        '404': { description: Unknown character }
+  /actuator/health:
+    get:
+      summary: Liveness/readiness
+      responses:
+        '200': { description: UP }
+components:
+  schemas:
+    ImageRef:
+      type: object
+      required: [src, width, height]
+      properties:
+        src: { type: string }
+        fallback: { type: string, description: PNG fallback when src is WebP }
+        width: { type: integer }
+        height: { type: integer }
+        alt: { type: string }
+    Stat:
+      type: object
+      properties:
+        label: { type: string }
+        value: { type: integer, minimum: 0, maximum: 10 }
+    Character:
+      type: object
+      required: [id, name, role, image, imageAlt]
+      properties:
+        id: { type: string }
+        name: { type: string }
+        role: { type: string }
+        tagline: { type: string }
+        image: { type: string }
+        imageAlt: { type: string }
+        colors:
+          type: object
+          properties: { primary: { type: string }, accent: { type: string }, ink: { type: string } }
+        powers: { type: array, items: { type: string } }
+        personality: { type: string }
+        catchphrase: { type: string }
+        funFacts: { type: array, items: { type: string } }
+        stats: { type: array, items: { $ref: '#/components/schemas/Stat' } }
+        inspiredBy: { type: [string, 'null'] }
+        scheme: { type: string, description: villains only }
+        weakness: { type: string, description: villains only }
+    Dialogue:
+      type: object
+      properties:
+        speaker: { type: string }
+        text: { type: string }
+        kind: { type: string, enum: [speech, shout, thought] }
+    Panel:
+      type: object
+      required: [id, image, alt, source, dialogue]
+      properties:
+        id: { type: string }
+        image: { $ref: '#/components/schemas/ImageRef' }
+        alt: { type: string }
+        source: { type: string, enum: [owner, studio] }
+        caption: { type: string }
+        sfx: { type: string }
+        dialogue: { type: array, items: { $ref: '#/components/schemas/Dialogue' } }
+    Issue:
+      type: object
+      properties:
+        id: { type: string }
+        slug: { type: string }
+        number: { type: integer }
+        title: { type: string }
+        tagline: { type: string }
+        synopsis: { type: string }
+        readingTime: { type: string }
+        ageNote: { type: string }
+        cover: { $ref: '#/components/schemas/ImageRef' }
+        panels: { type: array, items: { $ref: '#/components/schemas/Panel' } }
+        nextIssue:
+          type: object
+          properties: { number: { type: integer }, title: { type: string }, teaser: { type: string } }
+    IssueSummary:
+      type: object
+      properties:
+        slug: { type: string }
+        number: { type: integer }
+        title: { type: string }
+        tagline: { type: string }
+        cover: { $ref: '#/components/schemas/ImageRef' }
+        panelCount: { type: integer }
