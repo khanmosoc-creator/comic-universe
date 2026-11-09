@@ -1,0 +1,380 @@
+<title>Maze Guardians Build Guide</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Public+Sans:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a single reading column with full-width diagram plates and a sticky contents rail on wide screens. */
+:root {
+  --paper: #fbf8f1;
+  --panel: #ffffff;
+  --ink: #1b1035;
+  --muted: #5b5470;
+  --rule: #e4dfd2;
+  --accent: #5b21b6;
+  --accent-soft: #ede7fb;
+  --pop: #facc15;
+  --ok: #15803d;
+  --ok-soft: #dcfce7;
+  --warn: #a16207;
+  --warn-soft: #fef3c7;
+  --code-bg: #f3efe4;
+  --display: 'Bricolage Grotesque', 'Avenir Next', 'Segoe UI', system-ui, sans-serif;
+  --body: 'Public Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #15111f; --panel: #1e1830; --ink: #f1edf9; --muted: #b3abc8; --rule: #342b4a;
+    --accent: #c4b5fd; --accent-soft: #2c2347; --pop: #fde047; --ok: #4ade80; --ok-soft: #133224;
+    --warn: #facc15; --warn-soft: #3a2f10; --code-bg: #241d38; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #15111f; --panel: #1e1830; --ink: #f1edf9; --muted: #b3abc8; --rule: #342b4a;
+  --accent: #c4b5fd; --accent-soft: #2c2347; --pop: #fde047; --ok: #4ade80; --ok-soft: #133224;
+  --warn: #facc15; --warn-soft: #3a2f10; --code-bg: #241d38; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 1rem; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.page { max-width: 1120px; margin: 0 auto; padding-block: 2.5rem 4rem; display: grid; gap: 2.5rem; }
+@media (min-width: 1000px) { .page { grid-template-columns: 210px minmax(0, 1fr); } }
+.rail { display: none; }
+@media (min-width: 1000px) {
+  .rail { display: block; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 24px); align-self: start; font-size: .86rem; }
+  .rail ol { list-style: none; margin: 0; padding: 0; display: grid; gap: .35rem; }
+  .rail a { color: var(--muted); text-decoration: none; }
+  .rail a:hover { color: var(--accent); }
+  .rail p { font-family: var(--mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0 0 .6rem; }
+}
+main { min-width: 0; display: grid; gap: 3rem; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.1; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 800; letter-spacing: -.01em; }
+h2 { font-size: 1.7rem; font-weight: 800; }
+h3 { font-size: 1.15rem; font-weight: 600; margin-top: .4rem; }
+section { display: grid; gap: 1rem; min-width: 0; }
+p, li { max-width: 68ch; }
+p { margin: 0; }
+ul, ol { margin: 0; padding-left: 1.2rem; display: grid; gap: .3rem; }
+a { color: var(--accent); text-underline-offset: .18em; }
+code, kbd { font-family: var(--mono); font-size: .88em; background: var(--code-bg); padding: .08em .35em; border-radius: 4px; }
+pre { margin: 0; font-family: var(--mono); font-size: .85rem; line-height: 1.55; background: var(--code-bg); border: 1px solid var(--rule); border-radius: 8px; padding: 1rem 1.1rem; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+.eyebrow { font-family: var(--mono); font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
+.lede { font-size: 1.15rem; color: var(--muted); }
+header.top { display: grid; gap: .9rem; padding-bottom: 1.6rem; border-bottom: 3px solid var(--ink); }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: .8rem 1.6rem; margin: .4rem 0 0; }
+.facts div { min-width: 0; }
+.facts dt { font-family: var(--mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.facts dd { margin: .1rem 0 0; font-weight: 600; overflow-wrap: anywhere; }
+.pill { display: inline-block; font-family: var(--mono); font-size: .72rem; font-weight: 600; padding: .12rem .5rem; border-radius: 999px; white-space: nowrap; }
+.pill.ok { background: var(--ok-soft); color: var(--ok); }
+.pill.warn { background: var(--warn-soft); color: var(--warn); }
+.pill.info { background: var(--accent-soft); color: var(--accent); }
+.plate { background: var(--panel); border: 2px solid var(--ink); border-radius: 10px; padding: 1rem; overflow-x: auto; }
+.plate svg { display: block; width: 100%; min-width: 720px; height: auto; }
+.plate figcaption { font-size: .86rem; color: var(--muted); margin-top: .6rem; }
+figure { margin: 0; }
+.tbl { overflow-x: auto; border: 1px solid var(--rule); border-radius: 8px; background: var(--panel); }
+table { border-collapse: collapse; width: 100%; font-size: .92rem; }
+th, td { text-align: left; vertical-align: top; padding: .55rem .75rem; border-bottom: 1px solid var(--rule); }
+th { font-family: var(--mono); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 600; background: var(--code-bg); }
+tr:last-child td { border-bottom: 0; }
+td code { white-space: nowrap; }
+.steps { list-style: none; padding: 0; counter-reset: s; gap: .9rem; }
+.steps > li { counter-increment: s; display: grid; grid-template-columns: 2.2rem minmax(0, 1fr); gap: .2rem .8rem; max-width: none; }
+.steps > li::before { content: counter(s); grid-row: span 2; width: 2rem; height: 2rem; display: grid; place-items: center; font-family: var(--display); font-weight: 800; background: var(--pop); color: #1b1035; border: 2px solid var(--ink); border-radius: 50%; }
+.steps > li > * { min-width: 0; }
+.steps strong { display: block; }
+.callout { border-left: 4px solid var(--pop); background: var(--panel); padding: .8rem 1rem; border-radius: 0 8px 8px 0; }
+svg text { font-family: var(--body); }
+.d-box { fill: var(--panel); stroke: var(--ink); stroke-width: 2; }
+.d-accent { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 2; }
+.d-pop { fill: var(--pop); stroke: #1b1035; stroke-width: 2; }
+.d-dash { fill: none; stroke: var(--muted); stroke-width: 2; stroke-dasharray: 6 5; }
+.d-line { stroke: var(--ink); stroke-width: 2; fill: none; }
+.d-title { fill: var(--ink); font-weight: 700; font-size: 14px; }
+.d-title-dark { fill: #1b1035; font-weight: 700; font-size: 14px; }
+.d-text { fill: var(--muted); font-size: 12px; }
+.d-text-dark { fill: #3b3256; font-size: 12px; }
+.d-label { fill: var(--accent); font-family: var(--mono); font-size: 11px; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+</style>
+
+<div class="page">
+  <nav class="rail" aria-label="Contents">
+    <p>Contents</p>
+    <ol>
+      <li><a href="#summary">Summary</a></li>
+      <li><a href="#architecture">Architecture</a></li>
+      <li><a href="#routing">Routing &amp; requests</a></li>
+      <li><a href="#frontend">Front end</a></li>
+      <li><a href="#content">Content model</a></li>
+      <li><a href="#art">Art pipeline</a></li>
+      <li><a href="#privacy">Privacy &amp; compliance</a></li>
+      <li><a href="#a11y">Accessibility &amp; security</a></li>
+      <li><a href="#run">Run it locally</a></li>
+      <li><a href="#deploy">Deploy</a></li>
+      <li><a href="#verify">Verification</a></li>
+      <li><a href="#backend">Java backend</a></li>
+      <li><a href="#cost">Cost &amp; limits</a></li>
+      <li><a href="#limits">Known limitations</a></li>
+    </ol>
+  </nav>
+
+  <main>
+    <header class="top" id="summary">
+      <span class="eyebrow">Project handbook · comic-universe</span>
+      <h1>Super Zayd's Maze Guardians</h1>
+      <p class="lede">A free, kid-friendly superhero comic website: five heroes, three villains, a 12-panel Issue #1 reader and an Art Vault of the original sketches. Static React site on Cloudflare Pages, with no accounts, forms, ads, analytics or third-party requests.</p>
+      <dl class="facts">
+        <div><dt>Live website</dt><dd>{{LIVE_LINK}}</dd></div>
+        <div><dt>Repository</dt><dd><a href="https://github.com/khanmosoc-creator/comic-universe">github.com/khanmosoc-creator/comic-universe</a></dd></div>
+        <div><dt>Stack</dt><dd>React 19 · TypeScript 5.9 · Vite 7</dd></div>
+        <div><dt>Hosting</dt><dd>Cloudflare Pages, Free plan ($0)</dd></div>
+        <div><dt>Deployment</dt><dd>{{DEPLOY_STATUS}}</dd></div>
+        <div><dt>Future backend</dt><dd><code>services/api</code> · Java 21, Spring Boot</dd></div>
+      </dl>
+    </header>
+
+    <section id="architecture">
+      <span class="eyebrow">01 · System</span>
+      <h2>Architecture</h2>
+      <p>Everything a reader needs is produced at build time. Content and art are authored offline by the owner, committed to GitHub, built by Cloudflare Pages and served as static files from Cloudflare's edge. The reader's browser only ever talks to the site's own origin.</p>
+      <figure class="plate">
+        <svg viewBox="0 0 960 430" role="img" aria-labelledby="arch-t">
+          <title id="arch-t">Owner authoring flows into the GitHub repository, which GitHub Actions checks and Cloudflare Pages builds and serves to readers; the Java API is optional and not deployed.</title>
+          <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="currentColor"/></marker></defs>
+          <g style="color: var(--ink)">
+          <rect x="20" y="30" width="220" height="190" rx="10" class="d-box"/>
+          <text x="36" y="58" class="d-title">Owner authoring (offline)</text>
+          <text x="36" y="86" class="d-text">• Sketches → process_owner_art.py</text>
+          <text x="36" y="108" class="d-text">• Studio art → generate_art.py</text>
+          <text x="36" y="130" class="d-text">• Story → src/content/*.json</text>
+          <text x="36" y="152" class="d-text">• Approval → asset-manifest.json</text>
+          <text x="36" y="186" class="d-label">metadata stripped · no PII</text>
+
+          <rect x="300" y="30" width="200" height="110" rx="10" class="d-accent"/>
+          <text x="316" y="58" class="d-title">GitHub repo</text>
+          <text x="316" y="84" class="d-text">comic-universe · main</text>
+          <text x="316" y="106" class="d-text">apps/web · services/api · docs</text>
+
+          <rect x="300" y="180" width="200" height="110" rx="10" class="d-box"/>
+          <text x="316" y="208" class="d-title">GitHub Actions</text>
+          <text x="316" y="232" class="d-text">web-ci: tsc + vite build</text>
+          <text x="316" y="252" class="d-text">+ no-external-URL check</text>
+          <text x="316" y="272" class="d-text">api-ci: mvn verify</text>
+
+          <rect x="560" y="30" width="180" height="110" rx="10" class="d-pop"/>
+          <text x="576" y="58" class="d-title-dark">Cloudflare Pages build</text>
+          <text x="576" y="84" class="d-text-dark">npm ci &amp;&amp; npm run build</text>
+          <text x="576" y="106" class="d-text-dark">→ apps/web/dist</text>
+
+          <rect x="560" y="180" width="180" height="150" rx="10" class="d-box"/>
+          <text x="576" y="208" class="d-title">Cloudflare edge</text>
+          <text x="576" y="232" class="d-text">*.pages.dev · HTTPS</text>
+          <text x="576" y="254" class="d-text">_headers: strict CSP</text>
+          <text x="576" y="276" class="d-text">SPA fallback (no 404.html)</text>
+          <text x="576" y="306" class="d-label">request logs: Cloudflare only</text>
+
+          <rect x="790" y="180" width="150" height="150" rx="10" class="d-accent"/>
+          <text x="806" y="208" class="d-title">Reader</text>
+          <text x="806" y="232" class="d-text">Browser / phone</text>
+          <text x="806" y="254" class="d-text">HTML · JS · CSS</text>
+          <text x="806" y="276" class="d-text">art · fonts</text>
+          <text x="806" y="306" class="d-label">first-party only</text>
+
+          <rect x="20" y="300" width="480" height="100" rx="10" class="d-dash"/>
+          <text x="36" y="328" class="d-title">Optional · services/api (not deployed)</text>
+          <text x="36" y="352" class="d-text">Java 21 · Spring Boot read-only API serving the same JSON contract</text>
+          <text x="36" y="374" class="d-text">GET /api/v1/issues · /characters/{kind}/{id} · /actuator/health</text>
+
+          <path d="M240,110 L292,90" class="d-line" marker-end="url(#ah)"/>
+          <text x="244" y="86" class="d-label">git push</text>
+          <path d="M400,140 L400,172" class="d-line" marker-end="url(#ah)"/>
+          <path d="M500,85 L552,85" class="d-line" marker-end="url(#ah)"/>
+          <text x="506" y="76" class="d-label">webhook</text>
+          <path d="M650,140 L650,172" class="d-line" marker-end="url(#ah)"/>
+          <text x="658" y="162" class="d-label">deploy</text>
+          <path d="M740,255 L782,255" class="d-line" marker-end="url(#ah)"/>
+          <path d="M500,250 C 520,330 520,340 500,350" class="d-line" stroke-dasharray="4 4"/>
+          </g>
+        </svg>
+        <figcaption>Build-time pipeline. Solid arrows run today; the dashed box is reserved for a future platform and is not reachable by readers.</figcaption>
+      </figure>
+    </section>
+
+    <section id="routing">
+      <span class="eyebrow">02 · Requests</span>
+      <h2>Routing &amp; request flow</h2>
+      <p>The build contains no <code>404.html</code>, so Cloudflare Pages runs in single-page-app mode: a real file is served as-is, and any other path returns <code>index.html</code>, where a 60-line History-API router renders the page. No catch-all <code>_redirects</code> rule exists, so assets are never rewritten.</p>
+      <figure class="plate">
+        <svg viewBox="0 0 960 200" role="img" aria-labelledby="route-t">
+          <title id="route-t">A request for /heroes/zayd is checked against static files; if none matches, index.html is returned and the client router renders the hero page.</title>
+          <g style="color: var(--ink)">
+          <rect x="20" y="60" width="170" height="70" rx="10" class="d-box"/>
+          <text x="36" y="90" class="d-title">GET /heroes/zayd</text>
+          <text x="36" y="112" class="d-text">direct load or refresh</text>
+          <rect x="250" y="50" width="200" height="90" rx="10" class="d-accent"/>
+          <text x="266" y="80" class="d-title">Static file exists?</text>
+          <text x="266" y="102" class="d-text">/assets/* /art/* /fonts/*</text>
+          <text x="266" y="122" class="d-text">→ yes: serve file + headers</text>
+          <rect x="510" y="50" width="190" height="90" rx="10" class="d-pop"/>
+          <text x="526" y="80" class="d-title-dark">No → index.html</text>
+          <text x="526" y="102" class="d-text-dark">HTTP 200, CSP headers</text>
+          <text x="526" y="122" class="d-text-dark">same for every route</text>
+          <rect x="760" y="50" width="180" height="90" rx="10" class="d-box"/>
+          <text x="776" y="80" class="d-title">React router</text>
+          <text x="776" y="102" class="d-text">matches path → page</text>
+          <text x="776" y="122" class="d-text">unknown → "Wrong turn"</text>
+          <path d="M190,95 L242,95" class="d-line" marker-end="url(#ah)"/>
+          <path d="M450,95 L502,95" class="d-line" marker-end="url(#ah)"/>
+          <path d="M700,95 L752,95" class="d-line" marker-end="url(#ah)"/>
+          </g>
+        </svg>
+      </figure>
+    </section>
+
+    <section id="frontend">
+      <span class="eyebrow">03 · apps/web</span>
+      <h2>Front end</h2>
+      <div class="tbl"><table>
+        <thead><tr><th>Route</th><th>Page</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td><code>/</code></td><td>Home</td><td>Banner, Issue #1 feature, team and villain cards, sketch-to-comic showcase, Mazeverse teaser, Guardian Code</td></tr>
+          <tr><td><code>/read</code></td><td>Issue list</td><td>Issue #1 plus the Issue #2 teaser</td></tr>
+          <tr><td><code>/read/issue-1</code></td><td>Comic reader</td><td>12 panels; Back/Next, ← → keys, swipe, jump dots, "Whole page" view, end card; <code>?panel=N</code> deep links</td></tr>
+          <tr><td><code>/heroes</code>, <code>/heroes/:id</code></td><td>Hero profiles</td><td>Super Zayd, Dragoncrest, Arrowlight, Bubbleguard, Zigzag: powers, personality, stats, fun facts, source sketch</td></tr>
+          <tr><td><code>/villains</code>, <code>/villains/:id</code></td><td>Villain profiles</td><td>Grumblejaw, Blizzardbyte, Splashfang, plus the Glitchlings; scheme and weakness</td></tr>
+          <tr><td><code>/universe</code></td><td>The Mazeverse</td><td>Map, six places, Guardian Code, story timeline</td></tr>
+          <tr><td><code>/art-vault</code></td><td>Art Vault</td><td>The five owner sketches with notes on where each is used</td></tr>
+          <tr><td><code>/about</code>, <code>/privacy</code></td><td>About &amp; Privacy</td><td>How the art is made, credits, note for grown-ups; plain-language privacy policy</td></tr>
+        </tbody>
+      </table></div>
+      <p>Key files: <code>src/lib/router.tsx</code> (router, <code>Link</code>), <code>src/components/ComicReader.tsx</code>, <code>src/components/Layout.tsx</code> (skip link, nav, focus management), <code>src/styles/global.css</code>. Runtime dependencies are only <code>react</code> and <code>react-dom</code>.</p>
+    </section>
+
+    <section id="content">
+      <span class="eyebrow">04 · Data</span>
+      <h2>Content model</h2>
+      <p>All comic content is static JSON in <code>apps/web/src/content/</code>, typed by <code>src/types.ts</code> and bundled at build time. The optional Java API packages the same files, so the contract stays single-sourced.</p>
+      <div class="tbl"><table>
+        <thead><tr><th>File</th><th>Holds</th><th>Shape</th></tr></thead>
+        <tbody>
+          <tr><td><code>characters.json</code></td><td>5 heroes, 3 villains, minions</td><td><code>{ id, name, role, tagline, image, imageAlt, colors, powers[], personality, catchphrase, funFacts[], stats[], inspiredBy, scheme?, weakness? }</code></td></tr>
+          <tr><td><code>issue-001.json</code></td><td>Issue #1 and its 12 panels</td><td><code>panels[]: { id, image{src, fallback?, width, height}, alt, source: owner|studio, caption?, sfx?, dialogue[] }</code></td></tr>
+          <tr><td><code>universe.json</code></td><td>Lore, map, places, code, timeline</td><td><code>{ intro, map, places[], code, timeline[] }</code></td></tr>
+          <tr><td><code>gallery.json</code></td><td>Art Vault entries</td><td><code>items[]: { id, title, src, fallback, width, height, alt, note, usedIn }</code></td></tr>
+        </tbody>
+      </table></div>
+      <p>To add Issue #2: create <code>issue-002.json</code> with the same shape, import it in <code>src/lib/content.ts</code> (append to <code>issues</code>), and add it to <code>ISSUE_FILES</code> in the Java repository class.</p>
+    </section>
+
+    <section id="art">
+      <span class="eyebrow">05 · Art</span>
+      <h2>Art pipeline &amp; approvals</h2>
+      <p>The five owner sketches appear in panels 3, 4, 5, 7 and 8 and in the Art Vault. They were flattened, trimmed, resized to 1600&nbsp;px and re-encoded as WebP with PNG fallbacks, with all metadata removed. The 20 studio images (portraits, cover, seven panels, banner, map, badge, social card) are hand-coded vector drawings from <code>tools/art/generate_art.py</code>; lettering is outlined from the bundled Poppins font so nothing depends on fonts at runtime.</p>
+      <ol class="steps">
+        <li><strong>Prepare</strong><span>Run <code>process_owner_art.py</code> for sketches or <code>generate_art.py</code> for studio art.</span></li>
+        <li><strong>Review</strong><span>Owner checklist in <code>docs/art-approval-workflow.md</code>: original, kid-appropriate, no child photos or identifying details, rights held, alt text written.</span></li>
+        <li><strong>Record</strong><span>Add the file, hash, source, rights and approval date to <code>docs/asset-manifest.json</code>.</span></li>
+        <li><strong>Publish</strong><span>Pull request → CI build → Cloudflare preview URL → owner sign-off → merge to <code>main</code>.</span></li>
+      </ol>
+    </section>
+
+    <section id="privacy">
+      <span class="eyebrow">06 · Children &amp; families</span>
+      <h2>Privacy &amp; compliance</h2>
+      <p>Privacy-by-design: the site has nothing that collects information from readers, sets no cookies, uses no browser storage and makes no third-party requests. A strict CSP (<code>default-src 'self'</code>) enforces that, and CI fails the build if an external URL appears in the output.</p>
+      <div class="tbl"><table>
+        <thead><tr><th>Area</th><th>Finding</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Reader data collection</td><td>No accounts, forms, comments, uploads, chat, newsletter, analytics, ads or social embeds</td><td><span class="pill ok">Verified</span></td></tr>
+          <tr><td>Hosting processing</td><td>Cloudflare receives standard request data (IP, user agent, URL, time) to deliver and protect the site; disclosed on <code>/privacy</code></td><td><span class="pill info">Disclosed</span></td></tr>
+          <tr><td>Cloudflare Web Analytics</td><td>Not enabled; leave it off in the Pages project's Metrics tab</td><td><span class="pill warn">Owner to confirm</span></td></tr>
+          <tr><td>COPPA (amended Rule, compliance date Apr 22, 2026)</td><td>Persistent identifiers only for support of internal operations by the host; no other personal information collected</td><td><span class="pill warn">Legal review</span></td></tr>
+          <tr><td>Business contact on /privacy</td><td>None invented; the policy says one will be added</td><td><span class="pill warn">Owner action</span></td></tr>
+          <tr><td>US state children's privacy laws</td><td>Triggers (data processing, profiling, social features) are absent</td><td><span class="pill warn">Legal review</span></td></tr>
+          <tr><td>Sketch rights &amp; guardian consent</td><td>No artist name or age published; owner to confirm rights and consent for commercial use</td><td><span class="pill warn">Owner action</span></td></tr>
+          <tr><td>Trademark clearance</td><td>"Super Zayd's Maze Guardians" and character names not yet searched</td><td><span class="pill warn">Legal review</span></td></tr>
+        </tbody>
+      </table></div>
+      <p class="callout">This is an engineering review, not legal advice, and it does not guarantee compliance. The full checklist, including which future features need a fresh review (accounts, payments, email, comments, analytics, ads, a public API), is in <code>docs/privacy-compliance-checklist.md</code>.</p>
+    </section>
+
+    <section id="a11y">
+      <span class="eyebrow">07 · Quality</span>
+      <h2>Accessibility &amp; security</h2>
+      <ul>
+        <li>WCAG 2.2 AA target: landmarks, one <code>h1</code> per page, skip link, visible focus, focus moved to <code>&lt;main&gt;</code> on navigation, keyboard-operable reader with a live "Panel N of 12" announcement.</li>
+        <li>All images have alt text; dialogue is real text below each panel, not baked into images; reduced-motion respected; targets ≥ 24&nbsp;px; tested at 375&nbsp;px wide with no horizontal scroll.</li>
+        <li>Headers (<code>public/_headers</code>): CSP, <code>Referrer-Policy: no-referrer</code>, <code>X-Content-Type-Options</code>, <code>X-Frame-Options: DENY</code>, COOP, restrictive Permissions-Policy, HSTS; hashed assets cached for a year.</li>
+      </ul>
+    </section>
+
+    <section id="run">
+      <span class="eyebrow">08 · Hands-on</span>
+      <h2>Run it locally</h2>
+      <ol class="steps">
+        <li><strong>Clone</strong><pre><code>git clone https://github.com/khanmosoc-creator/comic-universe.git
+cd comic-universe/apps/web</code></pre></li>
+        <li><strong>Install (Node 22)</strong><pre><code>npm ci</code></pre></li>
+        <li><strong>Develop</strong><pre><code>npm run dev        # http://localhost:5173</code></pre></li>
+        <li><strong>Check and build</strong><pre><code>npm run check      # tsc --noEmit + vite build → dist/
+npm run preview    # serve the production build</code></pre></li>
+        <li><strong>Regenerate art (optional, Python 3.10+ with Pillow and fontTools)</strong><pre><code>cd ../..
+python3 tools/art/generate_art.py apps/web/public/art</code></pre></li>
+      </ol>
+    </section>
+
+    <section id="deploy">
+      <span class="eyebrow">09 · Release</span>
+      <h2>Deploy to Cloudflare Pages</h2>
+      <div class="tbl"><table>
+        <thead><tr><th>Setting</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td>Production branch</td><td><code>main</code></td></tr>
+          <tr><td>Framework preset</td><td>None</td></tr>
+          <tr><td>Build command</td><td><code>cd apps/web &amp;&amp; npm ci &amp;&amp; npm run build</code></td></tr>
+          <tr><td>Build output directory</td><td><code>apps/web/dist</code></td></tr>
+          <tr><td>Root directory</td><td>empty (repository root)</td></tr>
+          <tr><td>Environment</td><td><code>NODE_VERSION=22</code> (optional; <code>.node-version</code> pins it)</td></tr>
+        </tbody>
+      </table></div>
+      <p>Each push to <code>main</code> deploys production; each pull request gets a preview URL. A custom domain can be added later under the project's Custom domains tab without changing the build.</p>
+    </section>
+
+    <section id="verify">
+      <span class="eyebrow">10 · Evidence</span>
+      <h2>Verification</h2>
+      {{VERIFY_BLOCK}}
+      <p>Re-run anytime: <code>python3 apps/web/scripts/e2e_check.py &lt;site-url&gt; /tmp/shots</code> (Playwright).</p>
+    </section>
+
+    <section id="backend">
+      <span class="eyebrow">11 · Future</span>
+      <h2>Java backend (optional)</h2>
+      <p><code>services/api</code> is a Java 21 / Spring Boot 3.5 read-only content API with the contract in <code>docs/api/openapi.yaml</code>. It is stateless (no sessions, cookies or access logs), keeps CORS closed unless <code>COMIC_CORS_ALLOWED_ORIGINS</code> is set, and is tested in <code>api-ci</code>. The public site neither builds against it nor calls it.</p>
+      <pre><code>cd services/api
+mvn verify                 # tests
+mvn spring-boot:run        # http://localhost:8080/api/v1/issues/issue-1</code></pre>
+      <p>Path to a commercial platform: keep the static reader on Pages; host the API (for example on AKS or Azure Container Apps) behind APIM for partner feeds; add a CMS or database behind <code>ContentRepository</code>; and only then add accounts, purchases or newsletters, each after a new COPPA and state-law review with verifiable parental consent where required. Upgrade to Spring Boot 4.x before production.</p>
+    </section>
+
+    <section id="cost">
+      <span class="eyebrow">12 · Money</span>
+      <h2>Cost &amp; limits</h2>
+      <p><strong>$0 per month.</strong> Cloudflare Pages Free serves static assets without charging for requests or bandwidth. The limits that matter: 500 builds a month, one build at a time, a 20-minute build timeout, 20,000 files per site and 25&nbsp;MiB per file. This site is about 70 files (~2&nbsp;MB) and builds in roughly a minute. GitHub Actions minutes are free for public repositories.</p>
+    </section>
+
+    <section id="limits">
+      <span class="eyebrow">13 · Open items</span>
+      <h2>Known limitations</h2>
+      <ul>
+        {{LIMITS}}
+      </ul>
+    </section>
+  </main>
+</div>
